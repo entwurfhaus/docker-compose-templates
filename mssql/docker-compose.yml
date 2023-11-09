@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  # TODO - Untested on non-Apple M1 workstations
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SA_PASSWORD: "7qxNTJze#l1PWw0^G3GjsEu13oGpNSvl"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_AGENT_ENABLED: "true"
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./data/mssql:/var/opt/mssql
+    networks:
+      - mssql-network
+
+networks:
+  mssql-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local

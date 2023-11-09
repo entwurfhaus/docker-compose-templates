@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  azure-sql-edge:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: azure-sql-edge
+    environment:
+      ACCEPT_EULA: 1
+      MSSQL_SA_PASSWORD: "7qxNTJze#l1PWw0^G3GjsEu13oGpNSvl"
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./data/mssql:/var/opt/mssql
+    networks:
+      - azure-sql-edge-network
+
+networks:
+  azure-sql-edge-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
