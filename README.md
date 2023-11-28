@@ -10,6 +10,7 @@ A collection of `docker-compose` templates.
 4. `azure-sql-edge` (for MacOSX Apple M1 chipset)
 5. `mariadb`
 6. `mongodb`
+7. `redis` (TODO custom redis.conf returning container errors)
 
 ## Environment files
 
