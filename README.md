@@ -6,8 +6,8 @@ A collection of `docker-compose` templates.
 
 1. `postgres` (with `pgadmin`)
 2. `mysql`
-3. `mssql` (TODO)
-4. `azure-sql-edge` (for Apple M1 chipset)
+3. `mssql` (for Windows) (TODO Testing on Windows)
+4. `azure-sql-edge` (for MacOSX Apple M1 chipset)
 5. `mariadb`
 
 ## Environment files
