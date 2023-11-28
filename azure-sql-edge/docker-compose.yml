@@ -10,7 +10,7 @@ services:
     ports:
       - "1433:1433"
     volumes:
-      - ./data/mssql:/var/opt/mssql
+      - dbdata:/var/opt/mssql
     networks:
       - azure-sql-edge-db-network
 
