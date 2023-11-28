@@ -12,12 +12,12 @@ services:
     volumes:
       - ./data/mssql:/var/opt/mssql
     networks:
-      - azure-sql-edge-network
-
-networks:
-  azure-sql-edge-network:
-    driver: bridge
+      - azure-sql-edge-db-network
 
 volumes:
   dbdata:
     driver: local
+
+networks:
+  azure-sql-edge-db-network:
+    driver: bridge

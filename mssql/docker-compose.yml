@@ -18,12 +18,12 @@ services:
     volumes:
       - ./data/mssql:/var/opt/mssql
     networks:
-      - mssql-network
-
-networks:
-  mssql-network:
-    driver: bridge
+      - mssql-db-network
 
 volumes:
   dbdata:
     driver: local
+
+networks:
+  mssql-db-network:
+    driver: bridge
