@@ -13,12 +13,12 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - dbdata-mariadb:/var/lib/mysql
+      - mariadb-data:/var/lib/mysql
     networks:
       - mariadb-db-network
 
 volumes:
-  dbdata-mariadb:
+  mariadb-data:
     driver: local
 
 networks:
