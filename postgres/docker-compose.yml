@@ -2,9 +2,10 @@ version: "3.8"
 
 services:
   postgres:
-    image: postgres:15
+    image: postgres:latest
     restart: unless-stopped
     environment:
+      - POSTGRES_DB=entwurfhaus
       - POSTGRES_USER=entwurfhaus
       - POSTGRES_PASSWORD=password
     volumes:
@@ -14,7 +15,8 @@ services:
     networks:
       - postgres-db-network
   pgadmin:
-    image: dpage/pgadmin4
+    image: dpage/pgadmin4:latest
+    restart: unless-stopped
     environment:
       PGADMIN_DEFAULT_EMAIL: "admin@test.com"
       PGADMIN_DEFAULT_PASSWORD: "password"
@@ -22,6 +24,7 @@ services:
       - 16543:80
     volumes:
       - ./servers.json:/pgadmin4/servers.json
+      - ./pgpass:/pgpass
     networks:
       - postgres-db-network
 

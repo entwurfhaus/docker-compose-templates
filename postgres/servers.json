@@ -2,7 +2,7 @@
   "Servers": {
     "1": {
       "Name": "Entwurfhaus",
-      "Group": "postgres-servers",
+      "Group": "postgres-dev-servers",
       "Host": "postgres",
       "Port": 5432,
       "MaintenanceDB": "postgres",
