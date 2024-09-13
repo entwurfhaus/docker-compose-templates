@@ -13,6 +13,10 @@ A collection of `docker-compose` templates.
 7. `redis`
 8. `dynamodb-local`
 
+## Search platform
+
+1. `solr`
+
 ## Environment files
 
 Examples of `.env` files for the database servers.
