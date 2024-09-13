@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+  <!-- Solr/Lucene version -->
+  <luceneMatchVersion>8.8.0</luceneMatchVersion>
+
+  <!-- UpdateHandler settings -->
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <autoCommit>
+      <maxTime>15000</maxTime> <!-- Commit every 15 seconds -->
+      <openSearcher>false</openSearcher>
+    </autoCommit>
+    <autoSoftCommit>
+      <maxTime>3000</maxTime> <!-- Soft commit after 3 seconds -->
+    </autoSoftCommit>
+  </updateHandler>
+
+  <!-- Request handler for querying -->
+  <requestHandler name="/select" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str name="echoParams">explicit</str>
+      <int name="rows">10</int>
+      <str name="df">text</str> <!-- Default search field -->
+    </lst>
+  </requestHandler>
+
+  <!-- Caching settings -->
+  <query>
+    <filterCache class="solr.FastLRUCache" size="512" initialSize="512" autowarmCount="0" />
+    <queryResultCache class="solr.LRUCache" size="512" initialSize="512" autowarmCount="0" />
+    <documentCache class="solr.LRUCache" size="512" initialSize="512" autowarmCount="0" />
+  </query>
+
+</config>

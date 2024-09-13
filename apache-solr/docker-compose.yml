@@ -1,0 +1,31 @@
+services:
+  solr:
+    image: solr:latest
+    container_name: apache-solr
+    ports:
+      - "8983:8983"
+    volumes:
+      - solr_data:/var/solr
+      - ./core_alpha_conf:/opt/solr/server/solr/configsets/alpha/conf
+      - ./sample_data.json:/opt/solr/sample_data.json
+    command:
+      - bash
+      - -c
+      - |
+        solr-precreate alpha
+        solr start -force
+        until curl -s http://localhost:8983/solr/admin/cores?action=STATUS | grep '"alpha"' > /dev/null; do sleep 1; done
+        solr stop -all
+        solr-foreground
+    environment:
+      - SOLR_OPTS=-Dsolr.autoSoftCommit.maxTime=3000
+    networks:
+      - apache-solr-network
+
+volumes:
+  solr_data:
+    driver: local
+
+networks:
+  apache-solr-network:
+    driver: bridge

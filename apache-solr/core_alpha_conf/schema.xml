@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="alpha-schema" version="1.6">
+
+  <!-- Field types -->
+  <types>
+    <!-- String field (stored but not tokenized) -->
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+
+    <!-- Text field for full-text search -->
+    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- Float field for numeric values -->
+    <fieldType name="float" class="solr.TrieFloatField" precisionStep="0" omitNorms="true" />
+  </types>
+
+  <!-- Fields definition -->
+  <fields>
+    <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+    <field name="name" type="text_general" indexed="true" stored="true"/>
+    <field name="description" type="text_general" indexed="true" stored="true"/>
+    <field name="category" type="string" indexed="true" stored="true" />
+    <field name="price" type="float" indexed="true" stored="true" />
+  </fields>
+
+  <!-- Default search field -->
+  <defaultSearchField>description</defaultSearchField>
+
+  <!-- Unique key for each document -->
+  <uniqueKey>id</uniqueKey>
+
+  <!-- CopyField to concatenate 'name' and 'description' into a searchable field -->
+  <copyField source="name" dest="text"/>
+  <copyField source="description" dest="text"/>
+
+</schema>
