@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   # TODO - Untested on non-Apple M1 workstations
   mssql:

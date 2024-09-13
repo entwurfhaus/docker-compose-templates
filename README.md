@@ -6,11 +6,11 @@ A collection of `docker-compose` templates.
 
 1. `postgres` (with `pgadmin`)
 2. `mysql`
-3. `mssql` (for Windows) (TODO Testing on Windows)
+3. `mssql` (for Windows)
 4. `azure-sql-edge` (for MacOSX Apple M1 chipset)
 5. `mariadb`
 6. `mongodb`
-7. `redis` (TODO custom redis.conf returning container errors)
+7. `redis`
 
 ## Environment files
 
