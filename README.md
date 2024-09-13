@@ -11,6 +11,7 @@ A collection of `docker-compose` templates.
 5. `mariadb`
 6. `mongodb`
 7. `redis`
+8. `dynamodb-local`
 
 ## Environment files
 
